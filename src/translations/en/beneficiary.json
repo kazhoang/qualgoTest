@@ -1,0 +1,12 @@
+{
+	"title": "Create new Beneficiary",
+	"name": "Name",
+	"firstNamePlaceholder": "First Name",
+	"lastNamePlaceholder": "Last Name",
+	"iban": "IBAN",
+	"ibanPlaceholder": "Ex: AT483200000012345864",
+	"createNew": "Create new",
+	"createSuccessfully": "Create Beneficiary Successfully",
+	"duplicateIban": "IBan already exists",
+	"createBeneficiary": "Create Beneficiary"
+}
