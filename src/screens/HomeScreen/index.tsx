@@ -26,7 +26,7 @@ const HomeScreen = () => {
 
 	return (
 		<SafeScreen isTopEdge={false}>
-			<ScrollView bounces={false} style={backgrounds.dark}>
+			<ScrollView style={backgrounds.dark}>
 				<HomeBanner />
 				<MovieCards title="Now Playing" data={nowPlayingMovies} />
 				<MovieCards title="Popular Movies" data={popularMovies} />

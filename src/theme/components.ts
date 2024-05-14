@@ -1,6 +1,7 @@
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import type { ComponentTheme } from '@/types/theme/theme';
 import { moderateScale, screenWidth } from '@/types/theme/responsive';
+import { ASPECT_RATIO_BANNER } from '@/constants';
 
 export default ({
 	layout,
@@ -31,7 +32,7 @@ export default ({
 		},
 		movieBanner: {
 			width: screenWidth,
-			aspectRatio: 500 / 750,
+			aspectRatio: ASPECT_RATIO_BANNER,
 			justifyContent: 'flex-end',
 			opacity: 0.9,
 		},

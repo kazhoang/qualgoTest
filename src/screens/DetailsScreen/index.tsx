@@ -6,6 +6,7 @@ import {
 	Image,
 	TouchableOpacity,
 	StyleSheet,
+	ImageStyle,
 } from 'react-native';
 import React from 'react';
 
@@ -21,6 +22,7 @@ import {
 } from '@/services/movies';
 import BackImage from '@/theme/assets/images/back.png';
 import Favorites from '@/theme/assets/images/favorites.png';
+import { ImageVariant } from '@/components/atoms';
 
 const DetailsScreen = ({
 	navigation,
@@ -54,12 +56,9 @@ const DetailsScreen = ({
 		<View style={[layout.flex_1, backgrounds.dark]}>
 			<ScrollView style={layout.flex_1}>
 				<View style={components.movieBanner}>
-					<Image
-						source={{
-							uri: getMovieImageUrlPath(movieData?.poster_path),
-						}}
-						resizeMode="cover"
-						style={StyleSheet.absoluteFill}
+					<ImageVariant
+						imageUrl={getMovieImageUrlPath(movieData?.poster_path)}
+						style={StyleSheet.absoluteFill as ImageStyle}
 					/>
 					<LinearGradient
 						colors={['#000', 'transparent']}

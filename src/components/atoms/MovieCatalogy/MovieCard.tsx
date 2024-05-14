@@ -3,6 +3,8 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { getMovieImageUrlPath } from '@/services/movies';
 import { Movie } from '@/types/schemas/movie';
 import ImageVariant from '../ImageVariant';
+import { ASPECT_RATIO_BANNER, MOVIE_CARD_WIDTH } from '@/constants';
+import { moderateScale } from '@/types/theme/responsive';
 
 interface MovieCardProps {
 	movie: Movie;
@@ -19,6 +21,7 @@ const MovieCard = memo(({ movie, onPress }: MovieCardProps) => {
 			<ImageVariant
 				style={styles.movieImg}
 				imageUrl={getMovieImageUrlPath(movie.poster_path)}
+				borderRadius={moderateScale(10)}
 			/>
 		</TouchableOpacity>
 	);
@@ -28,8 +31,7 @@ export default MovieCard;
 
 const styles = StyleSheet.create({
 	movieImg: {
-		width: 120,
-		aspectRatio: 0.6,
-		borderRadius: 10,
+		width: MOVIE_CARD_WIDTH,
+		aspectRatio: ASPECT_RATIO_BANNER,
 	},
 });

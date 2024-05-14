@@ -1,4 +1,4 @@
-import { FlatList, TouchableWithoutFeedback, View } from 'react-native';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { useStoreState } from '@/stores/hooks';
@@ -8,6 +8,8 @@ import { RouteName } from '@/types/navigation';
 import { useAppNavigation } from '@/navigators/Application';
 import { useTheme } from '@/theme';
 import ImageVariant from '../ImageVariant';
+import { FlashList } from '@shopify/flash-list';
+import { BANNER_WIDTH } from '@/constants';
 
 const HomeBanner = () => {
 	const { components } = useTheme();
@@ -46,7 +48,8 @@ const HomeBanner = () => {
 	};
 
 	return (
-		<FlatList
+		<FlashList
+			estimatedItemSize={BANNER_WIDTH}
 			pagingEnabled
 			showsHorizontalScrollIndicator={false}
 			horizontal

@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React, { memo, useCallback } from 'react';
 import { Movie } from '@/types/schemas/movie';
 import { useTheme } from '@/theme';
@@ -6,6 +6,8 @@ import { useAppNavigation } from '@/navigators/Application';
 import { RouteName } from '@/types/navigation';
 import MovieCard from './MovieCard';
 import { ResponsiveWidth } from '@/types/theme/responsive';
+import { FlashList } from '@shopify/flash-list';
+import { MOVIE_CARD_WIDTH } from '@/constants';
 
 interface MovieCardsProps {
 	title: string;
@@ -45,7 +47,8 @@ const MovieCards = memo(({ title, data }: MovieCardsProps) => {
 					{title}
 				</Text>
 			</View>
-			<FlatList
+			<FlashList
+				estimatedItemSize={MOVIE_CARD_WIDTH}
 				horizontal
 				showsHorizontalScrollIndicator={false}
 				data={data}
