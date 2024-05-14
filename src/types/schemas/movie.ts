@@ -13,6 +13,36 @@ export type Movie = {
 	video: boolean;
 	vote_average?: number;
 	vote_count?: number;
+	production_companies?: string;
+};
+
+export type Genres = { id: number; name: string };
+export type ProductionCompany = {
+	id: number;
+	logo_path?: string | null;
+	name: string;
+	origin_country?: string;
+};
+
+export type MovieDetail = Movie & {
+	belongs_to_collection: {
+		backdrop_path?: string;
+		id: number;
+		name: string;
+		poster_path?: string;
+	};
+	budget?: number;
+	genres: Genres[];
+	homepage?: string;
+	imdb_id?: string;
+	origin_country?: string[];
+	production_companies: ProductionCompany[];
+	production_countries: { iso_3166_1: string; name: string }[];
+	revenue?: number;
+	runtime?: number;
+	spoken_languages: { english_name: string; iso_639_1: string; name: string }[];
+	status?: string;
+	tagline?: string;
 };
 
 export enum MovieCategory {

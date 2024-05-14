@@ -12,6 +12,7 @@
 		"clean": "rm -rf node_modules && rm -rf yarn.lock && rm -rf package-lock.json && rm -rf ios/Podfile.lock && rm -rf ios/Pods && yarn cache clean && yarn install --network-concurrency 1 && yarn pod --verbose"
 	},
 	"dependencies": {
+		"@candlefinance/faster-image": "^1.5.2",
 		"@react-navigation/native": "^6.1.15",
 		"@react-navigation/native-stack": "^6.9.23",
 		"axios": "^1.6.8",

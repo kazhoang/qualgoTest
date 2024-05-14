@@ -1,6 +1,6 @@
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import type { ComponentTheme } from '@/types/theme/theme';
-import { moderateScale } from '@/types/theme/responsive';
+import { moderateScale, screenWidth } from '@/types/theme/responsive';
 
 export default ({
 	layout,
@@ -28,6 +28,20 @@ export default ({
 			...borders.rounded_36,
 			height: moderateScale(48),
 			width: '100%',
+		},
+		movieBanner: {
+			width: screenWidth,
+			aspectRatio: 500 / 750,
+			justifyContent: 'flex-end',
+			opacity: 0.9,
+		},
+		linearStyle: {
+			height: '40%',
+			...layout.absolute,
+			...layout.bottom0,
+			...layout.left0,
+			...layout.right0,
+			...layout.z10,
 		},
 		claimBtn: {
 			height: moderateScale(48),
@@ -60,6 +74,10 @@ export default ({
 		image24: {
 			height: moderateScale(24),
 			width: moderateScale(24),
+		},
+		image24x28: {
+			height: moderateScale(24),
+			width: moderateScale(28),
 		},
 		image32: {
 			height: moderateScale(32),

@@ -1,41 +1,36 @@
-import {
-	FlatList,
-	Image,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View,
-} from 'react-native';
-import React from 'react';
-
-import { getMovieImageUrlPath } from '@/services/movies';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import React, { memo, useCallback } from 'react';
 import { Movie } from '@/types/schemas/movie';
 import { useTheme } from '@/theme';
+import { useAppNavigation } from '@/navigators/Application';
+import { RouteName } from '@/types/navigation';
+import MovieCard from './MovieCard';
+import { ResponsiveWidth } from '@/types/theme/responsive';
 
 interface MovieCardsProps {
 	title: string;
 	data: Movie[];
 }
 
-const MovieCards = ({ title, data }: MovieCardsProps) => {
+const MovieCards = memo(({ title, data }: MovieCardsProps) => {
 	const { layout, gutters, fonts } = useTheme();
+	const navigation = useAppNavigation();
 
-	const handleOnClick = movieData => {
-		// navigation.navigate('VideoPlayer', { movieData });
+	const handleOnClick = (movieData: Movie) => {
+		navigation.navigate(RouteName.Details, {
+			movieId: movieData.id,
+		});
 	};
 
-	const renderMovieCards = ({ item, index }) => {
-		return (
-			<TouchableOpacity onPress={() => handleOnClick(item)}>
-				<Image
-					style={styles.movieImg}
-					source={{
-						uri: getMovieImageUrlPath(item.poster_path),
-					}}
-				/>
-			</TouchableOpacity>
-		);
+	const renderMovieCards = ({ item }: { item: Movie }) => {
+		return <MovieCard movie={item} onPress={handleOnClick} />;
 	};
+
+	const renderSeparator = useCallback(
+		() => <View style={styles.separatorStyle} />,
+		[],
+	);
+
 	return (
 		<View style={[gutters.marginVertical_16, gutters.marginHorizontal_16]}>
 			<View style={[layout.justifyBetween]}>
@@ -55,22 +50,17 @@ const MovieCards = ({ title, data }: MovieCardsProps) => {
 				showsHorizontalScrollIndicator={false}
 				data={data}
 				renderItem={renderMovieCards}
-				ItemSeparatorComponent={() => <View style={{ width: 15 }} />}
+				keyExtractor={item => String(item.id)}
+				ItemSeparatorComponent={renderSeparator}
 			/>
 		</View>
 	);
-};
+});
 
 export default MovieCards;
 
 const styles = StyleSheet.create({
-	container: {
-		height: 120,
-		marginTop: 10,
-	},
-	movieImg: {
-		width: 120,
-		aspectRatio: 0.6,
-		borderRadius: 10,
+	separatorStyle: {
+		width: ResponsiveWidth(16),
 	},
 });

@@ -1,12 +1,31 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '@/theme';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+	createNativeStackNavigator,
+	NativeStackNavigationProp,
+	NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 import { RouteName } from '@/types/navigation';
 import HomeScreen from '@/screens/HomeScreen';
+import DetailsScreen from '@/screens/DetailsScreen';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+	Home: undefined;
+	Details: {
+		movieId: number | string;
+	};
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export type RootStackScreenProps<T extends keyof RootStackParamList> =
+	NativeStackScreenProps<RootStackParamList, T>;
+
+export const useAppNavigation = () => {
+	return useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+};
 
 function ApplicationNavigator() {
 	const { variant, navigationTheme } = useTheme();
@@ -14,12 +33,9 @@ function ApplicationNavigator() {
 	return (
 		<NavigationContainer theme={navigationTheme}>
 			<Stack.Navigator key={variant} screenOptions={{ headerShown: false }}>
-				<Stack.Screen name={RouteName.HomeScreen} component={HomeScreen} />
+				<Stack.Screen name={RouteName.Home} component={HomeScreen} />
+				<Stack.Screen name={RouteName.Details} component={DetailsScreen} />
 				{/* <Stack.Screen
-					name={RouteName.TransactionScreen}
-					component={TransactionScreen}
-				/>
-				<Stack.Screen
 					name={RouteName.CreateBeneficiaryScreen}
 					component={CreateBeneficiaryScreen}
 				/> */}

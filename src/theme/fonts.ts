@@ -43,7 +43,7 @@ export const staticFontStyles = {
 	justify: {
 		textAlign: 'justify',
 	},
-	lineHeight18: {
-		lineHeight: ResponsiveFont(18),
+	lineHeight24: {
+		lineHeight: ResponsiveFont(24),
 	},
 } as const satisfies Record<string, TextStyle>;

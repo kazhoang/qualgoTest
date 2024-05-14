@@ -7,8 +7,8 @@ import SearchImage from '@/theme/assets/images/search.png';
 import { useTheme } from '@/theme';
 import { SafeScreen } from '@/components/template';
 
-const HomeScreen = ({}: any) => {
-	const { layout, components } = useTheme();
+const HomeScreen = () => {
+	const { layout, components, backgrounds } = useTheme();
 
 	const { nowPlayingMovies, popularMovies } = useStoreState(
 		store => store.movieModel,
@@ -26,7 +26,7 @@ const HomeScreen = ({}: any) => {
 
 	return (
 		<SafeScreen isTopEdge={false}>
-			<ScrollView bounces={false}>
+			<ScrollView bounces={false} style={backgrounds.dark}>
 				<HomeBanner />
 				<MovieCards title="Now Playing" data={nowPlayingMovies} />
 				<MovieCards title="Popular Movies" data={popularMovies} />
