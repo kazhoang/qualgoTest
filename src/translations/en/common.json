@@ -1,7 +1,4 @@
 {
-	"gotIt": "Got it",
-	"failure": "Ops! Something went wrong",
-	"changeLanguage": "Click the logo to change language",
-	"longPress": "Longpress the logo to reset the storage\n(Required restart app - Test purposes only)",
-	"storeCleared": "The store is cleaned\n\nPLEASE RESTART"
+	"noData": "No data",
+	"play": "Play"
 }

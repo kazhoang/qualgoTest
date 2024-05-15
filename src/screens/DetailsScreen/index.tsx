@@ -20,17 +20,18 @@ import {
 	getGenreNames,
 	getMovieImageUrlPath,
 } from '@/services/movies';
-import BackImage from '@/theme/assets/images/back.png';
 import Favorites from '@/theme/assets/images/favorites.png';
-import { ImageVariant } from '@/components/atoms';
+import { BackButton, ImageVariant } from '@/components/atoms';
+import { RouteName } from '@/types/navigation';
+import { useTranslation } from 'react-i18next';
 
 const DetailsScreen = ({
-	navigation,
 	route: {
 		params: { movieId },
 	},
-}: RootStackScreenProps<'Details'>) => {
+}: RootStackScreenProps<RouteName.Details>) => {
 	const insets = useSafeAreaInsets();
+	const { t } = useTranslation(['detail', 'common']);
 	const { layout, fonts, backgrounds, components, gutters, borders } =
 		useTheme();
 
@@ -88,7 +89,7 @@ const DetailsScreen = ({
 									borders.rounded_36,
 								]}
 							>
-								<Text style={[fonts.dark, fonts.bold]}>Play</Text>
+								<Text style={[fonts.dark, fonts.bold]}>{t('common:play')}</Text>
 							</TouchableOpacity>
 							<TouchableOpacity style={components.buttonCircle}>
 								<Image
@@ -111,7 +112,9 @@ const DetailsScreen = ({
 								gutters.marginBottom_16,
 							]}
 						>
-							Genres - {getGenreNames(movieData?.genres)}
+							{t('detail:genres', {
+								value: getGenreNames(movieData?.genres) || t('common:noData'),
+							})}
 						</Text>
 						<Text
 							style={[
@@ -122,24 +125,20 @@ const DetailsScreen = ({
 								gutters.marginBottom_16,
 							]}
 						>
-							{movieData?.overview}
+							{movieData?.overview || t('common:noData')}
 						</Text>
 						<Text style={[fonts.gray400, fonts.alignCenter]}>
-							Distribution -{' '}
-							{getDistributionNames(movieData?.production_companies)}
+							{t('detail:distribution', {
+								value:
+									getDistributionNames(movieData?.production_companies) ||
+									t('common:noData'),
+							})}
 						</Text>
 					</View>
 				</View>
 				<View style={{ height: insets.bottom + 16 }} />
 			</ScrollView>
-			<View style={[layout.absolute, layout.left16, layout.top68]}>
-				<TouchableOpacity
-					onPress={() => navigation.pop()}
-					style={components.buttonCircle}
-				>
-					<Image source={BackImage} style={[components.image32]} />
-				</TouchableOpacity>
-			</View>
+			<BackButton />
 		</View>
 	);
 };

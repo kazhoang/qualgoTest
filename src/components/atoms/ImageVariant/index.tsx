@@ -1,19 +1,25 @@
 import React from 'react';
-import { FasterImageView } from '@candlefinance/faster-image';
+import {
+	AndroidImageResizeMode,
+	FasterImageView,
+	IOSImageResizeMode,
+} from '@candlefinance/faster-image';
 import { ImageStyle } from 'react-native';
 
 type ImageVariantProps = {
 	imageUrl: string;
 	style: ImageStyle;
 	borderRadius?: number;
+	resizeMode?: IOSImageResizeMode | AndroidImageResizeMode;
 };
 
 const ImageVariant: React.FC<ImageVariantProps> = props => {
-	const { imageUrl, borderRadius, style } = props;
+	const { imageUrl, borderRadius, style, resizeMode } = props;
 	return (
 		<FasterImageView
 			style={style}
 			source={{
+				resizeMode: resizeMode,
 				transitionDuration: 0.3,
 				cachePolicy: 'discWithCacheControl',
 				showActivityIndicator: true,

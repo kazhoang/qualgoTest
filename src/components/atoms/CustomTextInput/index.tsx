@@ -14,7 +14,7 @@ function CustomTextInput(props: CustomTextInputProps) {
 		<View style={customStyle}>
 			<TextInput
 				autoCapitalize="none"
-				// autoFocus
+				autoFocus
 				style={[components.textInput, centerText && fonts.alignCenter]}
 				placeholderTextColor={colors.gray200}
 				{...rest}
@@ -22,11 +22,5 @@ function CustomTextInput(props: CustomTextInputProps) {
 		</View>
 	);
 }
-
-CustomTextInput.defaultProps = {
-	customStyle: {},
-	centerText: false,
-	error: '',
-};
 
 export default CustomTextInput;

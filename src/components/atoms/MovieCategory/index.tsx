@@ -2,8 +2,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { memo, useCallback } from 'react';
 import { Movie } from '@/types/schemas/movie';
 import { useTheme } from '@/theme';
-import { useAppNavigation } from '@/navigators/Application';
-import { RouteName } from '@/types/navigation';
 import MovieCard from './MovieCard';
 import { ResponsiveWidth } from '@/types/theme/responsive';
 import { FlashList } from '@shopify/flash-list';
@@ -14,18 +12,11 @@ interface MovieCardsProps {
 	data: Movie[];
 }
 
-const MovieCards = memo(({ title, data }: MovieCardsProps) => {
+const MovieCategory = memo(({ title, data }: MovieCardsProps) => {
 	const { layout, gutters, fonts } = useTheme();
-	const navigation = useAppNavigation();
-
-	const handleOnClick = (movieData: Movie) => {
-		navigation.navigate(RouteName.Details, {
-			movieId: movieData.id,
-		});
-	};
 
 	const renderMovieCards = ({ item }: { item: Movie }) => {
-		return <MovieCard movie={item} onPress={handleOnClick} />;
+		return <MovieCard movie={item} />;
 	};
 
 	const renderSeparator = useCallback(
@@ -51,6 +42,7 @@ const MovieCards = memo(({ title, data }: MovieCardsProps) => {
 				estimatedItemSize={MOVIE_CARD_WIDTH}
 				horizontal
 				showsHorizontalScrollIndicator={false}
+				decelerationRate={0.5}
 				data={data}
 				renderItem={renderMovieCards}
 				keyExtractor={item => String(item.id)}
@@ -60,7 +52,7 @@ const MovieCards = memo(({ title, data }: MovieCardsProps) => {
 	);
 });
 
-export default MovieCards;
+export default MovieCategory;
 
 const styles = StyleSheet.create({
 	separatorStyle: {

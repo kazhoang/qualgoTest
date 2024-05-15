@@ -14,7 +14,7 @@
 	"dependencies": {
 		"@candlefinance/faster-image": "^1.5.2",
 		"@react-navigation/native": "^6.1.15",
-		"@react-navigation/native-stack": "^6.9.23",
+		"@react-navigation/stack": "^6.3.29",
 		"@shopify/flash-list": "^1.6.4",
 		"axios": "^1.6.8",
 		"easy-peasy": "^6.0.4",

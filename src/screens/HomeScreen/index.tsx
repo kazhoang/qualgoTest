@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react';
 import { Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useStoreActions, useStoreState } from '@/stores/hooks';
-import MovieCards from '@/components/atoms/MovieCatalogy';
-import HomeBanner from '@/components/atoms/HomeBanner';
-import SearchImage from '@/theme/assets/images/search.png';
 import { useTheme } from '@/theme';
 import { SafeScreen } from '@/components/template';
+import { useAppNavigation } from '@/navigators/Application';
+import { RouteName } from '@/types/navigation';
+import SearchImage from '@/theme/assets/images/search.png';
+import { HomeBanner, MovieCategory } from '@/components/atoms';
+import { useTranslation } from 'react-i18next';
 
 const HomeScreen = () => {
+	const { t } = useTranslation(['home']);
+
 	const { layout, components, backgrounds } = useTheme();
+	const navigation = useAppNavigation();
 
 	const { nowPlayingMovies, popularMovies } = useStoreState(
 		store => store.movieModel,
@@ -22,14 +27,16 @@ const HomeScreen = () => {
 		fetchPopularMovies();
 	}, [fetchNowPlayingMovies, fetchPopularMovies, fetchUpcomingMovies]);
 
-	const onPress = () => {};
+	const onPress = () => {
+		navigation.navigate(RouteName.Search);
+	};
 
 	return (
 		<SafeScreen isTopEdge={false}>
-			<ScrollView style={backgrounds.dark}>
+			<ScrollView style={backgrounds.dark} showsVerticalScrollIndicator={false}>
 				<HomeBanner />
-				<MovieCards title="Now Playing" data={nowPlayingMovies} />
-				<MovieCards title="Popular Movies" data={popularMovies} />
+				<MovieCategory title={t('home:nowPlaying')} data={nowPlayingMovies} />
+				<MovieCategory title={t('home:popularMovies')} data={popularMovies} />
 			</ScrollView>
 			<TouchableOpacity
 				onPress={onPress}

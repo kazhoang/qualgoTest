@@ -1,7 +1,7 @@
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import type { ComponentTheme } from '@/types/theme/theme';
 import { moderateScale, screenWidth } from '@/types/theme/responsive';
-import { ASPECT_RATIO_BANNER } from '@/constants';
+import { ASPECT_RATIO_BANNER, MOVIE_CARD_WIDTH } from '@/constants';
 
 export default ({
 	layout,
@@ -21,20 +21,23 @@ export default ({
 			height: moderateScale(56),
 			width: moderateScale(56),
 		},
-		button: {
-			...layout.justifyCenter,
-			...layout.itemsCenter,
-			...backgrounds.primary,
-			...fonts.gray400,
-			...borders.rounded_36,
-			height: moderateScale(48),
-			width: '100%',
+		dragIndicator: {
+			width: moderateScale(80),
+			height: moderateScale(4),
+			...borders.rounded_4,
+			...backgrounds.gray50,
+			alignSelf: 'center',
+			...gutters.marginTop_16,
 		},
 		movieBanner: {
 			width: screenWidth,
 			aspectRatio: ASPECT_RATIO_BANNER,
 			justifyContent: 'flex-end',
 			opacity: 0.9,
+		},
+		movieImg: {
+			width: MOVIE_CARD_WIDTH,
+			aspectRatio: ASPECT_RATIO_BANNER,
 		},
 		linearStyle: {
 			height: '40%',
@@ -43,19 +46,6 @@ export default ({
 			...layout.left0,
 			...layout.right0,
 			...layout.z10,
-		},
-		claimBtn: {
-			height: moderateScale(48),
-			width: '100%',
-			justifyContent: 'center',
-		},
-		lottieClaim: {
-			...layout.fullWidth,
-			aspectRatio: 16 / 9,
-		},
-		lottieIcon: {
-			width: moderateScale(160),
-			height: moderateScale(160),
 		},
 		textInput: {
 			...layout.justifyCenter,
@@ -66,11 +56,6 @@ export default ({
 			...borders.rounded_36,
 			height: moderateScale(48),
 			width: '100%',
-		},
-		circle250: {
-			borderRadius: 140,
-			height: 68,
-			width: 68,
 		},
 		image24: {
 			height: moderateScale(24),
@@ -90,12 +75,6 @@ export default ({
 			...gutters.marginBottom_16,
 			...borders.rounded_8,
 			...backgrounds.card,
-		},
-		separator: {
-			...borders.w_1,
-			...borders.gray200,
-			width: '80%',
-			borderStyle: 'dashed',
 		},
 	} as const satisfies Record<string, ImageStyle | TextStyle | ViewStyle>;
 };

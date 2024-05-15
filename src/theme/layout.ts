@@ -43,6 +43,12 @@ export default {
 	justifyStart: {
 		justifyContent: 'flex-start',
 	},
+	spaceAround: {
+		justifyContent: 'space-around',
+	},
+	overflowHidden: {
+		overflow: 'hidden',
+	},
 	/* Sizes Layouts */
 	flex_1: {
 		flex: 1,
