@@ -1,6 +1,6 @@
-import { getMovies } from '@/services/movies';
-import { Movie, MovieCategory } from '@/types/schemas/movie';
+import { qualgoClient } from '@/App';
 import { Action, action, thunk, Thunk } from 'easy-peasy';
+import { Movie, MovieCategory } from 'qualgo-sdk';
 
 export interface MovieState {
 	upcomingMovies: Movie[];
@@ -37,7 +37,7 @@ export const movieModel: MovieModel = {
 	}),
 	fetchUpcomingMovies: thunk(async actions => {
 		try {
-			const movies = await getMovies(MovieCategory.Upcoming);
+			const movies = await qualgoClient.getMovies(MovieCategory.Upcoming);
 			actions.setUpcomingMovies(movies);
 		} catch (error) {
 			console.error('Failed to fetch upcoming movies:', error);
@@ -45,7 +45,7 @@ export const movieModel: MovieModel = {
 	}),
 	fetchNowPlayingMovies: thunk(async actions => {
 		try {
-			const movies = await getMovies(MovieCategory.NowPlaying);
+			const movies = await qualgoClient.getMovies(MovieCategory.NowPlaying);
 			actions.setNowPlayingMovies(movies);
 		} catch (error) {
 			console.error('Failed to fetch now playing movies:', error);
@@ -53,7 +53,7 @@ export const movieModel: MovieModel = {
 	}),
 	fetchPopularMovies: thunk(async actions => {
 		try {
-			const movies = await getMovies(MovieCategory.Popular);
+			const movies = await qualgoClient.getMovies(MovieCategory.Popular);
 			actions.setPopularMovies(movies);
 		} catch (error) {
 			console.error('Failed to fetch now playing movies:', error);

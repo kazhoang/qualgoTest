@@ -1,9 +1,9 @@
 import React from 'react';
 import { useStoreState } from '@/stores/hooks';
-import { Movie } from '@/types/schemas/movie';
 import { FlashList } from '@shopify/flash-list';
 import { BANNER_WIDTH } from '@/constants';
 import Banner from './Banner';
+import { Movie } from 'qualgo-sdk';
 
 const HomeBanner = () => {
 	const { upcomingMovies } = useStoreState(store => store.movieModel);

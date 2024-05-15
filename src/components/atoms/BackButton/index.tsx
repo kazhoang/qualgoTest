@@ -11,7 +11,7 @@ function BackButton() {
 	return (
 		<View style={[layout.absolute, layout.left16, layout.top68]}>
 			<TouchableOpacity
-				onPress={() => navigation.pop()}
+				onPress={() => navigation.goBack()}
 				style={components.buttonCircle}
 			>
 				<Image source={BackImage} style={[components.image32]} />

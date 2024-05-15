@@ -1,12 +1,11 @@
 import React, { memo } from 'react';
 import { TouchableWithoutFeedback, View } from 'react-native';
-import { getMovieImageUrlPath } from '@/services/movies';
-import { Movie } from '@/types/schemas/movie';
 import ImageVariant from '../ImageVariant';
 import LinearGradient from 'react-native-linear-gradient';
 import { useAppNavigation } from '@/navigators/Application';
 import { RouteName } from '@/types/navigation';
 import { useTheme } from '@/theme';
+import { getMovieImageUrlPath, Movie } from 'qualgo-sdk';
 
 interface BannerProps {
 	movie: Movie;

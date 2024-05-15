@@ -14,11 +14,11 @@
 	"dependencies": {
 		"@candlefinance/faster-image": "^1.5.2",
 		"@react-navigation/native": "^6.1.15",
-		"@react-navigation/stack": "^6.3.29",
+		"@react-navigation/native-stack": "^6.9.26",
 		"@shopify/flash-list": "^1.6.4",
-		"axios": "^1.6.8",
 		"easy-peasy": "^6.0.4",
 		"i18next": "^23.8.2",
+		"qualgo-sdk": "https://github.com/kazhoang/qualgo-sdk",
 		"react": "18.2.0",
 		"react-i18next": "^14.0.5",
 		"react-native": "0.74.1",
@@ -45,7 +45,8 @@
 		"jest": "^29.6.3",
 		"prettier": "2.8.8",
 		"react-test-renderer": "18.2.0",
-		"typescript": "5.0.4"
+		"typescript": "5.0.4",
+		"babel-plugin-inline-dotenv": "^1.7.0"
 	},
 	"engines": {
 		"node": ">=18"

@@ -1,12 +1,11 @@
 import React, { memo } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { getMovieImageUrlPath } from '@/services/movies';
-import { Movie } from '@/types/schemas/movie';
+import { Keyboard, Text, TouchableOpacity, View } from 'react-native';
 import { useAppNavigation } from '@/navigators/Application';
 import { RouteName } from '@/types/navigation';
 import { useTheme } from '@/theme';
 import ImageVariant from '../ImageVariant';
 import { useTranslation } from 'react-i18next';
+import { getMovieImageUrlPath, Movie } from 'qualgo-sdk';
 
 interface SearchItemProps {
 	movie: Movie;
@@ -18,6 +17,7 @@ const SearchItem = memo(({ movie }: SearchItemProps) => {
 	const { fonts, backgrounds, layout, borders, components, gutters } =
 		useTheme();
 	const handleOnClick = () => {
+		Keyboard.dismiss();
 		navigation.navigate(RouteName.Details, {
 			movieId: movie.id,
 		});
@@ -40,7 +40,9 @@ const SearchItem = memo(({ movie }: SearchItemProps) => {
 				borderRadius={8}
 				resizeMode="fill"
 			/>
-			<View style={[layout.flex_1, layout.spaceAround, gutters.marginLeft_16]}>
+			<View
+				style={[layout.flex_1, layout.spaceAround, gutters.marginHorizontal_16]}
+			>
 				<View>
 					<Text
 						style={[
@@ -54,17 +56,17 @@ const SearchItem = memo(({ movie }: SearchItemProps) => {
 						{movie.title}
 					</Text>
 					<Text style={[fonts.size_12, fonts.gray200]}>
-						{t('search:rateFiled', {
-							star: movie.vote_average,
-							voteCount: movie.vote_count,
-						})}
+						{movie.release_date || t('common:noData')}
 					</Text>
 				</View>
 				<Text style={(fonts.size_14, fonts.gray50)}>
-					★ {movie.vote_average} | View ({movie.vote_count})
+					{t('search:rateFiled', {
+						star: movie.vote_average,
+						voteCount: movie.vote_count,
+					})}
 				</Text>
 				<Text style={[fonts.size_14, fonts.gray50]} numberOfLines={3}>
-					{movie.overview || 'No overview available'}
+					{movie.overview || t('common:noData')}
 				</Text>
 			</View>
 		</TouchableOpacity>

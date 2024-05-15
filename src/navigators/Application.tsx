@@ -1,16 +1,15 @@
 import React from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
 import { useTheme } from '@/theme';
+
+import { RouteName } from '@/types/navigation';
+import { DetailsScreen, HomeScreen, SearchScreen } from '@/screens';
 import {
+	createNativeStackNavigator,
 	NativeStackNavigationProp,
 	NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import { RouteName } from '@/types/navigation';
-import HomeScreen from '@/screens/HomeScreen';
-import DetailsScreen from '@/screens/DetailsScreen';
-import SearchScreen from '@/screens/SearchScreen';
 
 export type RootStackParamList = {
 	Home: undefined;
@@ -20,7 +19,7 @@ export type RootStackParamList = {
 	Search: undefined;
 };
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
 	NativeStackScreenProps<RootStackParamList, T>;
@@ -40,8 +39,6 @@ function ApplicationNavigator() {
 				screenOptions={{
 					gestureEnabled: false,
 					headerShown: false,
-					cardOverlayEnabled: true,
-					cardStyle: { backgroundColor: 'transparent' },
 				}}
 			>
 				<Stack.Screen name={RouteName.Home} component={HomeScreen} />
@@ -49,12 +46,8 @@ function ApplicationNavigator() {
 					name={RouteName.Details}
 					component={DetailsScreen}
 					options={{
+						animation: 'fade',
 						presentation: 'transparentModal',
-						cardStyleInterpolator: ({ current: { progress } }) => ({
-							cardStyle: {
-								opacity: progress,
-							},
-						}),
 					}}
 				/>
 				<Stack.Screen

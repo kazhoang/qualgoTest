@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, Keyboard } from 'react-native';
 import { useTheme } from '@/theme';
 import { SafeScreen } from '@/components/template';
 import {
@@ -10,20 +10,23 @@ import {
 import { moderateScale } from '@/types/theme/responsive';
 import { MOVIE_NOT_FOUND_URL } from '@/constants';
 import { useTranslation } from 'react-i18next';
-import useSearchMovies from '@/services/movies/hooks';
+import { useSearchMovies } from 'qualgo-sdk';
 
 const SearchScreen = () => {
 	const { t } = useTranslation(['search']);
 	const { layout, backgrounds, gutters, components, fonts } = useTheme();
 	const [query, setQuery] = useState('');
-	const { searchResults, loading, noResult } = useSearchMovies(query);
+	const { searchResults, isLoading, noResult } = useSearchMovies(query);
 
 	return (
 		<SafeScreen>
 			<View
+				onTouchStart={() => {
+					Keyboard.dismiss();
+				}}
 				style={[layout.flex_1, backgrounds.dark, gutters.paddingHorizontal_16]}
 			>
-				<View style={components.dragIndicator} />
+				{Platform.OS === 'ios' && <View style={components.dragIndicator} />}
 				<CustomTextInput
 					customStyle={[gutters.marginVertical_32]}
 					placeholder={t('search:searchForMovies')}
@@ -31,8 +34,8 @@ const SearchScreen = () => {
 					onChangeText={setQuery}
 				/>
 				<View style={layout.flex_1}>
-					<MovieSearchedList movies={searchResults} isFetching={loading} />
-					{!loading && noResult && (
+					<MovieSearchedList movies={searchResults} isFetching={isLoading} />
+					{!isLoading && noResult && (
 						<View style={styles.noResult}>
 							<ImageVariant
 								style={styles.noResultImage}

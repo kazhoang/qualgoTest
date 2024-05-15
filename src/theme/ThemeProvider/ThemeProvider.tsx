@@ -64,9 +64,14 @@ function ThemeProvider({ children, storage }: Props) {
 	};
 
 	// Flatten config with current variant
+	// Uncomment if want to use changeTheme
+	// const fullConfig = useMemo(() => {
+	// 	return generateConfig(variant) satisfies FulfilledThemeConfiguration;
+	// }, [variant]);
+
 	const fullConfig = useMemo(() => {
-		return generateConfig(variant) satisfies FulfilledThemeConfiguration;
-	}, [variant]);
+		return generateConfig('dark') satisfies FulfilledThemeConfiguration;
+	}, []);
 
 	const fonts = useMemo(() => {
 		return {

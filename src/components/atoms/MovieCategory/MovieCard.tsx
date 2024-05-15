@@ -1,12 +1,11 @@
 import React, { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { getMovieImageUrlPath } from '@/services/movies';
-import { Movie, MoviePosterSizes } from '@/types/schemas/movie';
 import ImageVariant from '../ImageVariant';
 import { moderateScale } from '@/types/theme/responsive';
 import { RouteName } from '@/types/navigation';
 import { useAppNavigation } from '@/navigators/Application';
 import { useTheme } from '@/theme';
+import { getMovieImageUrlPath, Movie, MoviePosterSizes } from 'qualgo-sdk';
 
 interface MovieCardProps {
 	movie: Movie;

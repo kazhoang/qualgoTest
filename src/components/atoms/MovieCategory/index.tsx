@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { memo, useCallback } from 'react';
-import { Movie } from '@/types/schemas/movie';
 import { useTheme } from '@/theme';
 import MovieCard from './MovieCard';
 import { ResponsiveWidth } from '@/types/theme/responsive';
 import { FlashList } from '@shopify/flash-list';
 import { MOVIE_CARD_WIDTH } from '@/constants';
+import { Movie } from 'qualgo-sdk';
 
 interface MovieCardsProps {
 	title: string;
