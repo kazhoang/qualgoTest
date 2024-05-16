@@ -1,7 +1,19 @@
 import { moderateScale, screenWidth } from '@/types/theme/responsive';
 
+//MOVE SIZE
 export const MOVIE_CARD_WIDTH = moderateScale(120);
+
+//BANNER SIZE
 export const BANNER_WIDTH = screenWidth;
+
+//CASTER SIZE
+export const CASTER_WIDTH = moderateScale(70);
+
+//REVIEW SIZE
+export const REVIEW_WIDTH = moderateScale(240);
+export const REVIEW_HEIGHT = moderateScale(96);
+
+//ASPECT RATIO
 export const ASPECT_RATIO_BANNER = 500 / 750;
 
 export const MOVIE_NOT_FOUND_URL =

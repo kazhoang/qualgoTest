@@ -18,14 +18,24 @@ const HomeScreen = () => {
 	const { nowPlayingMovies, popularMovies } = useStoreState(
 		store => store.movieModel,
 	);
-	const { fetchUpcomingMovies, fetchNowPlayingMovies, fetchPopularMovies } =
-		useStoreActions(store => store.movieModel);
+	const {
+		fetchUpcomingMovies,
+		fetchNowPlayingMovies,
+		fetchPopularMovies,
+		fetchNewReleaseMovies,
+	} = useStoreActions(store => store.movieModel);
 
 	useEffect(() => {
+		fetchNewReleaseMovies();
 		fetchUpcomingMovies();
 		fetchNowPlayingMovies();
 		fetchPopularMovies();
-	}, [fetchNowPlayingMovies, fetchPopularMovies, fetchUpcomingMovies]);
+	}, [
+		fetchNewReleaseMovies,
+		fetchNowPlayingMovies,
+		fetchPopularMovies,
+		fetchUpcomingMovies,
+	]);
 
 	const onPress = () => {
 		navigation.navigate(RouteName.Search);

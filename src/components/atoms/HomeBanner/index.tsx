@@ -6,7 +6,7 @@ import Banner from './Banner';
 import { Movie } from 'qualgo-sdk';
 
 const HomeBanner = () => {
-	const { upcomingMovies } = useStoreState(store => store.movieModel);
+	const { newReleaseMovies } = useStoreState(store => store.movieModel);
 
 	const renderMovieBanner = ({ item }: { item: Movie }) => {
 		return <Banner movie={item} />;
@@ -18,7 +18,7 @@ const HomeBanner = () => {
 			pagingEnabled
 			showsHorizontalScrollIndicator={false}
 			horizontal
-			data={upcomingMovies}
+			data={newReleaseMovies}
 			renderItem={renderMovieBanner}
 		/>
 	);

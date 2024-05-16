@@ -3213,9 +3213,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.668:
-  version "1.4.769"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.769.tgz#c2e82091525e2d9dbcc2b8f66cdb0466ec8ebdf4"
-  integrity sha512-bZu7p623NEA2rHTc9K1vykl57ektSPQYFFqQir8BOYf6EKOB+yIsbFB9Kpm7Cgt6tsLr9sRkqfqSZUw7LP1XxQ==
+  version "1.4.770"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.770.tgz#a26df8541a7fd92d938a2b42c70ba2502d0e9c62"
+  integrity sha512-ONwOsDiVvV07CMsyH4+dEaZ9L79HMH/ODHnDS3GkIhgNqdDHJN2C18kFb0fBj0RXpQywsPJl6k2Pqg1IY4r1ig==
 
 emittery@^0.13.1:
   version "0.13.1"
@@ -5880,7 +5880,7 @@ pure-rand@^6.0.0:
 
 "qualgo-sdk@https://github.com/kazhoang/qualgo-sdk":
   version "0.1.0"
-  resolved "https://github.com/kazhoang/qualgo-sdk#2e63b9d3cfe6f7cee63455bf67694f5409957de8"
+  resolved "https://github.com/kazhoang/qualgo-sdk#6a6a3d480817a6542246375fc30b209160943c1e"
   dependencies:
     axios "^1.6.8"
 

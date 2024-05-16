@@ -16,14 +16,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from '@/theme';
 
 import Favorites from '@/theme/assets/images/favorites.png';
-import { BackButton, ImageVariant } from '@/components/atoms';
+import { BackButton, Casters, ImageVariant, Reviews } from '@/components/atoms';
 import { RouteName } from '@/types/navigation';
 import { useTranslation } from 'react-i18next';
 import {
 	getDistributionNames,
 	getGenreNames,
 	getMovieImageUrlPath,
+	useMovieCasters,
 	useMovieDetail,
+	useMovieReviews,
 } from 'qualgo-sdk';
 
 const DetailsScreen = ({
@@ -37,6 +39,8 @@ const DetailsScreen = ({
 		useTheme();
 
 	const { isLoading, movieDetail, error } = useMovieDetail(movieId);
+	const { isLoading: casterLoading, casters } = useMovieCasters(movieId);
+	const { isLoading: reviewLoading, reviews } = useMovieReviews(movieId);
 
 	if (isLoading) {
 		return (
@@ -147,6 +151,8 @@ const DetailsScreen = ({
 							})}
 						</Text>
 					</View>
+					<Casters data={casters} isLoading={casterLoading} />
+					<Reviews data={reviews} isLoading={reviewLoading} />
 				</View>
 				<View style={{ height: insets.bottom + 16 }} />
 			</ScrollView>

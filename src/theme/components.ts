@@ -1,7 +1,13 @@
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import type { ComponentTheme } from '@/types/theme/theme';
 import { moderateScale, screenWidth } from '@/types/theme/responsive';
-import { ASPECT_RATIO_BANNER, MOVIE_CARD_WIDTH } from '@/constants';
+import {
+	ASPECT_RATIO_BANNER,
+	CASTER_WIDTH,
+	MOVIE_CARD_WIDTH,
+	REVIEW_HEIGHT,
+	REVIEW_WIDTH,
+} from '@/constants';
 
 export default ({
 	layout,
@@ -38,6 +44,14 @@ export default ({
 		movieImg: {
 			width: MOVIE_CARD_WIDTH,
 			aspectRatio: ASPECT_RATIO_BANNER,
+		},
+		casterImg: {
+			width: CASTER_WIDTH,
+			height: CASTER_WIDTH,
+		},
+		reviewCard: {
+			maxWidth: REVIEW_WIDTH,
+			maxHeight: REVIEW_HEIGHT,
 		},
 		linearStyle: {
 			height: '40%',
