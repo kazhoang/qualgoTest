@@ -14,7 +14,7 @@ const ns = Object.keys(en) as TupleUnion<keyof typeof en>;
 
 export const defaultNS = ns[0];
 
-void i18n.use(initReactI18next).init({
+i18n.use(initReactI18next).init({
 	ns,
 	defaultNS,
 	resources: {
